@@ -29,7 +29,7 @@ public class ConditionalChallenge {
 
         // Part 3: Leap Year Checker
         
-        System.out.println()
+        System.out.println();
         temperature -= 50.023;
         System.out.println("Temperature: " + temperature);
         if (temperature > 80) {
