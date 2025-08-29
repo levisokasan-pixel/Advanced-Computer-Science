@@ -9,7 +9,7 @@ public class Zombie {
 
     // instance variables (attributes)
     // green
-    String skincolor = "Green"; 
+    String skincolor = "Green";
     // dead
     boolean isDead = true;
     // humans eaten
@@ -24,9 +24,9 @@ public class Zombie {
         System.out.println("Phillip ate " + phillip.humansConsumed() + " humans.");
 
         Zombie brian = new Zombie();
-    
+
         System.out.println(brian.growl());
-        
+
     }
 
     // Challenge: make a new method that returns the number of humans eaten
