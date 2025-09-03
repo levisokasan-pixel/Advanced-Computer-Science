@@ -7,7 +7,7 @@ public class Unit0Exercises {
         System.out.println();
 
         // testing sleepIn() method
-        System.out.println(obj.sleepIn(false, false)); // output: true
+        System.out.println(obj.sleepIn(false, true)); // output: true
         // sleepIn(true, false) -> true
         // sleepIn(false, true) -> true
 
@@ -25,13 +25,17 @@ public class Unit0Exercises {
 
     public boolean sleepIn(boolean weekday, boolean vacation) {
         if (weekday == false && vacation == false) {
-            return true; } else {
+            return true; 
+        } else if (weekday == false && vacation == true) {
+            return true;
+        } else if (weekday == true && vacation == true) {
+            return true;
+        } else {
             return false;
         }
 
-            }
+    }
         
-
     public int diff21(int n) {
         if (n < 21) {
             n = 21 - n;
