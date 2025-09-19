@@ -31,7 +31,8 @@ public class StudentTester {
         System.out.println(senior.toString()); // grade should be 13
 
         System.out.println("------------------------");
-        System.out.println("The fact that " + sophomore.getName() + " and " + sophomore0.getName() + " are equal is " + sophomore.equals(sophomore0) + "."); // should output false
+        System.out.println("The fact that " + sophomore.getName() + " and " + sophomore0.getName() 
+            + " are equal is " + sophomore.equals(sophomore0) + "."); // should output false
         System.out.println("------------------------");
 
     }

@@ -23,6 +23,10 @@ public class Student {
         return id;
     }
 
+    public int getGrade() {
+        return grade;
+    }
+
     public int grade() {
         return grade;
     }
@@ -44,7 +48,7 @@ public class Student {
     }
 
     public boolean equals(Student other) {
-        return name == other.name && id == other.id && grade == other.grade;
+        return name.equals(other.name) && id.equals(other.id) && grade == other.grade;
     }
 
     public String generateId() {
@@ -52,12 +56,14 @@ public class Student {
     }
 
     public String generateNum8() {
-        return (int) (Math.random() * 8) + "" + (int) (Math.random() * 8) + "" + (int) (Math.random() * 8);
+        return (int) ((Math.random() * 8) + 1) + "" + (int) (Math.random() * 8) 
+            + "" + (int) (Math.random() * 8);
 
     }
 
     public String generateNum9() {
-        return  (int) (Math.random() * 9) + "" + (int) (Math.random() * 9) + "" + (int) (Math.random() * 9) + "" + (int) (Math.random() * 9);
+        return  (int) (Math.random() * 9) + "" + (int) (Math.random() * 9) + "" 
+            + (int) (Math.random() * 9) + "" + (int) (Math.random() * 9);
     }
 
 }
