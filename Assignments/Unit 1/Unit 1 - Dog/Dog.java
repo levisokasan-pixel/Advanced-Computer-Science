@@ -13,8 +13,8 @@ public class Dog {
         this.ownerName = ownerName;
         this.age = age;
         this.dogId = dogId;
-        this.dogChar = Dog.generateDogChar(this.dogId);
-        this.dogTag = generateDogTag();
+        this.dogChar = PawesomeUtils.generateDogChar(this.dogId);
+        this.dogTag = PawesomeUtils.generateDogTag(this.dogId, this.dogChar);
     }
 
     public Dog() {
@@ -22,8 +22,8 @@ public class Dog {
         ownerName = "Johnson";
         age = 0;
         dogId = 199;
-        this.dogChar = Dog.generateDogChar(this.dogId);
-        this.dogTag = generateDogTag();
+        this.dogChar = PawesomeUtils.generateDogChar(this.dogId);
+        this.dogTag = PawesomeUtils.generateDogTag(this.dogId, this.dogChar);
     }
 
     public String getName() {
@@ -56,7 +56,7 @@ public class Dog {
 
     public void setDogId(int dogId) {
         this.dogId = dogId;
-        dogChar = generateDogChar(dogId);
+        dogChar = PawesomeUtils.generateDogChar(dogId);
     }
 
     public char getDogChar() {
@@ -103,31 +103,6 @@ public class Dog {
                 && this.dogId == other.dogId && this.dogChar == other.dogChar 
                     && this.dogTag.equals(other.dogTag) 
                         && this.stillInFacility == other.stillInFacility); 
-    }
-
-
-    public static char generateDogChar(int dogId) {
-        int numOne = dogId / 100;
-        int numTwo = dogId / 10 % 10;
-        int numThree = dogId % 10;
-        return (char) ((numOne + numTwo + numThree) % 10 + 'F');
-    }
-
-    public String generateDogTag() {
-        return dogId + "" + dogChar;
-    }
-
-    public static String pickup(Dog dog, String personName) {
-        if (dog.ownerName == personName) {
-            dog.stillInFacility = false;
-        return dog.name + " has been picked up by their owner " + personName;
-        }
-        return "You are not the owner. You can't pick up this dog.";
-    }
-
-    public static void checkIn(Dog dog, String personName) {
-        dog.stillInFacility = true;
-        dog.ownerName = personName;
     }
     
 }
