@@ -27,44 +27,75 @@ public class DogTester {
         System.out.println(defaultDog.toString());
         System.out.println(maleDog.toString());
         System.out.println("---------- Checking equals() ----------");
-        System.out.println("The fact " + sigmaDog.getName() + " equals " + defaultDog.getName() + " is " + sigmaDog.equals(defaultDog));
-        System.out.println("The fact " + maleDog.getName() + " equals " + defaultDog.getName() + " is " + maleDog.equals(defaultDog));
+        System.out.println("The fact " + sigmaDog.getName() + " equals " 
+            + defaultDog.getName() + " is " + sigmaDog.equals(defaultDog));
+        System.out.println("The fact " + maleDog.getName() + " equals " 
+            + defaultDog.getName() + " is " + maleDog.equals(defaultDog));
         Dog defaultDogTwo = new Dog();
-        System.out.println("The fact " + defaultDog.getName() + " equals " + defaultDogTwo.getName() + " is " + defaultDog.equals(defaultDogTwo));
+        System.out.println("The fact " + defaultDog.getName() + " equals " 
+            + defaultDogTwo.getName() + " is " + defaultDog.equals(defaultDogTwo));
         System.out.println("---------- A dog leaves facility ----------");
         sigmaDog.setStillInFacility(false);
         System.out.println(sigmaDog.toString());
         System.out.println("---------- Testing Dog Chars ----------");
-        System.out.println("Dog char for 123: " + PawesomeUtils.generateDogChar(123));
-        System.out.println("Dog char for 456: " + PawesomeUtils.generateDogChar(456));
-        System.out.println("Dog char for 789: " + PawesomeUtils.generateDogChar(789));
+        System.out.println("Dog char for 123: " 
+            + PawesomeUtils.generateDogChar(123));
+        System.out.println("Dog char for 456: " 
+            + PawesomeUtils.generateDogChar(456));
+        System.out.println("Dog char for 789: " 
+            + PawesomeUtils.generateDogChar(789));
         System.out.println("---------- Dogs get picked up ----------");  
         Dog layla = new Dog("Layla", "Maria", 20, 444);
         System.out.println(PawesomeUtils.pickup(layla, "Maria"));
-        System.out.println("The fact the dog is still in the facility is " + layla.isStillInFacility());
+        System.out.println("The fact the dog is still in the facility is " 
+            + layla.isStillInFacility());
         PawesomeUtils.checkIn(layla, "Maria");
         System.out.println(PawesomeUtils.pickup(layla, "John"));
-        System.out.println("The fact the dog is still in the facility is " + layla.isStillInFacility());
+        System.out.println("The fact the dog is still in the facility is " 
+            + layla.isStillInFacility());
         System.out.println("---------- Dogs get checked in ----------");  
-        Dog eColi = new Dog("E Coli", "Bacterium", 11, 656);
-        eColi.setStillInFacility(false);
-        System.out.println("The fact the dog is still in the facility is " + eColi.isStillInFacility());
-        PawesomeUtils.checkIn(eColi, "Bacterium");
+        Dog ecoli = new Dog("E Coli", "Bacterium", 11, 656);
+        ecoli.setStillInFacility(false);
+        System.out.println("The fact the dog is still in the facility is " 
+            + ecoli.isStillInFacility());
+        PawesomeUtils.checkIn(ecoli, "Bacterium");
         System.out.println("Dog has been checked in.");
-        System.out.println("The fact the dog is still in the facility is " + eColi.isStillInFacility());
-        System.out.println("E Coli's owner is " + eColi.getOwnerName());
+        System.out.println("The fact the dog is still in the facility is " 
+            + ecoli.isStillInFacility());
+        System.out.println("E Coli's owner is " + ecoli.getOwnerName());
         System.out.println("---------- Validating dogId ----------");  
-        System.out.println("Dog Id 239 (returns same # if works): " + PawesomeUtils.validateDogId(239));
-        System.out.println("Dog Id 555 (returns same # if works): " + PawesomeUtils.validateDogId(555));
-        System.out.println("Dog Id 066 (returns same # if works): " + PawesomeUtils.validateDogId(066));
-        System.out.println("Dog Id 1000 (returns same # if works): " + PawesomeUtils.validateDogId(1000));
+        System.out.println("Dog Id 239 (returns same # if works): " 
+            + PawesomeUtils.validateDogId(239));
+        System.out.println("Dog Id 555 (returns same # if works): " 
+            + PawesomeUtils.validateDogId(555));
+        System.out.println("Dog Id 066 (returns same # if works): " 
+            + PawesomeUtils.validateDogId(066));
+        System.out.println("Dog Id 1000 (returns same # if works): " 
+            + PawesomeUtils.validateDogId(1000));
         System.out.println("---------- Validating dogTag ----------");
-        Dog blackPlague = new Dog("Black Death", "Bacterium", 800, 444);
-        Dog flu = new Dog("Flu", "Bacterium", 110, 557);
-        Dog covid = new Dog("Covid", "Bacterium", 3, 888);
-        System.out.println("Does this Dog Tag work (true if yes): " + blackPlague.validateDogTag(blackPlague.getDogTag()));
-
-
+        Dog blackPlague = new Dog("Black Death", "Bacterium", 1, 444);
+        Dog flu = new Dog("Flu", "Bacterium", 2, 557);
+        Dog covid = new Dog("Covid", "Bacterium", 5, 888);
+        System.out.println("Does this Dog Tag work (true if yes): " 
+            + blackPlague.getDogTag() + ", " + PawesomeUtils.validateDogTag(blackPlague));
+        System.out.println("Does this Dog Tag work (true if yes): " 
+            + flu.getDogTag() + ", " + PawesomeUtils.validateDogTag(flu));
+        System.out.println("Does this Dog Tag work (true if yes): " 
+            + covid.getDogTag() + ", " + PawesomeUtils.validateDogTag(covid));
+        System.out.println("Setting covid's dog tag to 001H...");
+        covid.setDogTag("001H");
+        System.out.println("Revalidating...");
+        covid.setDogId(PawesomeUtils.validateDogId(covid.getDogId()));
+        System.out.println("Does this Dog Tag work (true if yes): " 
+            + covid.getDogTag() + ", " + PawesomeUtils.validateDogTag(covid));
+        System.out.println("---------- Dog -> human age ----------");
+        System.out.println("Dog age 1: " + PawesomeUtils.convertAgeToHumanAge(blackPlague));
+        System.out.println("Dog age 2: " + PawesomeUtils.convertAgeToHumanAge(flu));
+        System.out.println("Dog age 5: " + PawesomeUtils.convertAgeToHumanAge(covid));
+        System.out.println("---------- Human -> dog age ----------");
+        System.out.println("Human age 15: " + PawesomeUtils.convertAgeToDogAge(15));
+        System.out.println("Human age 35: " + PawesomeUtils.convertAgeToDogAge(35));
+        System.out.println("Human age 95: " + PawesomeUtils.convertAgeToDogAge(95));
     }
 
 }

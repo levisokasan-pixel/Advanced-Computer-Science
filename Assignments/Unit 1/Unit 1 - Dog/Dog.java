@@ -12,7 +12,7 @@ public class Dog {
         this.name = name;
         this.ownerName = ownerName;
         this.age = age;
-        this.dogId = dogId;
+        this.dogId = PawesomeUtils.validateDogId(dogId);
         this.dogChar = PawesomeUtils.generateDogChar(this.dogId);
         this.dogTag = PawesomeUtils.generateDogTag(this.dogId, this.dogChar);
     }
@@ -21,7 +21,7 @@ public class Dog {
         name = "John";
         ownerName = "Johnson";
         age = 0;
-        dogId = 199;
+        this.dogId = PawesomeUtils.validateDogId(dogId);
         this.dogChar = PawesomeUtils.generateDogChar(this.dogId);
         this.dogTag = PawesomeUtils.generateDogTag(this.dogId, this.dogChar);
     }
@@ -55,8 +55,12 @@ public class Dog {
     }
 
     public void setDogId(int dogId) {
+        if (dogId <= 100 || dogId >= 999) {
+            this.dogId = PawesomeUtils.validateDogId(dogId); 
+        }
         this.dogId = dogId;
-        dogChar = PawesomeUtils.generateDogChar(dogId);
+        this.dogChar = PawesomeUtils.generateDogChar(dogId);
+        this.dogTag = PawesomeUtils.generateDogTag(this.dogId, this.dogChar);
     }
 
     public char getDogChar() {
@@ -64,6 +68,7 @@ public class Dog {
     }
 
     public void setDogChar(char dogChar) {
+        dogChar = PawesomeUtils.generateDogChar(dogId);
         this.dogChar = dogChar;
     }
 
@@ -87,8 +92,10 @@ public class Dog {
 
         String partOne = name + " is a good dog. They are " + age 
                 + " years old and belong to " + ownerName;
-            String partTwoOne = ". They are currently in our facility. For employee use only: DogTag is ";
-            String partTwoTwo = ". They are currently not in our facility. For employee use only: DogTag is ";
+        String partTwoOne = ". They are currently in our facility." 
+            + " For employee use only: DogTag is ";
+        String partTwoTwo = ". They are currently not in our facility." 
+                + "For employee use only: DogTag is ";
 
         if (stillInFacility == true) {
             return partOne + partTwoOne + dogTag + ".";
