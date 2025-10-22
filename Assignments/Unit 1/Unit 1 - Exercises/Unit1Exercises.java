@@ -198,7 +198,12 @@ public class Unit1Exercises {
      * countCode("cozexxcope") -> 2
      */
     public static int countCode(String str) {
-        return 0;
+        int count = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == 'c' && str.charAt(i + 1) == 'o' && str.charAt(i + 3) == 'e') {
+                    count++;
+            }
+        }
+        return count;
     }
-
 }
