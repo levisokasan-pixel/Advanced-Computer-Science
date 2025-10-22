@@ -15,8 +15,12 @@ public class NameOps {
     public static int indexOfSecondSpace(String name) {
         if (indexOfFirstSpace(name) < 0) {
             return -1;
+        } else if (indexOfFirstSpace(name) > 0 && ((name.substring(indexOfFirstSpace(name) 
+            + 1).indexOf(" ")) < 0)) {
+            return -1;
         } else {
-            return name.indexOf(name.substring(name.indexOf(" "))); // help
+            return indexOfFirstSpace(name) + 1 
+                + name.substring(indexOfFirstSpace(name) + 1).indexOf(" "); 
         }
     }
 
@@ -31,35 +35,36 @@ public class NameOps {
     public static String findLastName(String name) {
         if (indexOfFirstSpace(name) < 0) {
             return "";
+        } else if (indexOfFirstSpace(name) > 0 && indexOfSecondSpace(name) < 0) {
+            return name.substring(name.indexOf(" ") + 1);
         } else {
-            return name.substring(name.indexOf(" ")); // help
+            return name.substring(indexOfSecondSpace(name) + 1); 
         }
     }
 
     public static String findMiddleName(String name) {
         if (indexOfFirstSpace(name) < 0) {
             return "";
-        } else if (indexOfFirstSpace(name) > 0 && indexOfFirstSpace(name) > 0) {
+        } else if (indexOfFirstSpace(name) > 0 && indexOfSecondSpace(name) < 0) {
             return "";
         } else {
-            return name.substring(name.indexOf(" "), 
-            name.indexOf(name.substring(name.indexOf(" "))));
+            return name.substring(indexOfFirstSpace(name) + 1, indexOfSecondSpace(name));
         }
     } 
 
     public static String generateLastFirstMidInitial(String name) { // run for preconditions
         if (indexOfFirstSpace(name) > 0 && indexOfSecondSpace(name) > 0) {
             String firstName = name.substring(0, name.indexOf(" "));
-            String middleInitial = name.substring(name.indexOf("") + 1);
-            String lastName = name.substring(name.indexOf(name.indexOf(name.substring(name.indexOf(" "))))); 
-            return lastName + "," + firstName + middleInitial;
+            String middleInitial = name.substring(indexOfFirstSpace(name) 
+                + 1, indexOfFirstSpace(name) + 2);
+            String lastName = name.substring(indexOfSecondSpace(name) + 1);
+            return lastName + ", " + firstName + " " + middleInitial + ".";
         } else if (indexOfFirstSpace(name) > 0 && indexOfSecondSpace(name) < 0) {
             String firstName = name.substring(0, name.indexOf(" "));
-            String lastName = name.substring(name.indexOf(name.indexOf(name.substring(name.indexOf(" "))))); 
-            return lastName + "," + firstName;
+            String lastName = name.substring(indexOfFirstSpace(name) + 1); 
+            return lastName + ", " + firstName;
         } else {
-            String firstName = name.substring(0, name.indexOf(" "));
-            return firstName;
+            return name;
         }
     }
 }
