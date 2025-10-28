@@ -32,8 +32,8 @@ public class Unit1Exercises {
      */
     public static String makeOutWord(String out, String word) {
         int outLength = out.length();
-        String left = out.substring(0, outLength/2);
-        String right = out.substring(outLength/2);
+        String left = out.substring(0, outLength / 2);
+        String right = out.substring(outLength / 2);
         return left + word + right;
     }
 
@@ -67,7 +67,7 @@ public class Unit1Exercises {
      * comboString("aaa", "b") -> "baaab"
      */
     public static String comboString(String a, String b) {
-        return b + a + b;
+        return a + b + a;
     }
 
     // method: left2
@@ -83,7 +83,7 @@ public class Unit1Exercises {
      */
     public static String left2(String str) {
         if (str.length() > 2) {
-            return str.substring(2)+ str.substring(0, 2);
+            return str.substring(2) + str.substring(0, 2);
         } else {
             return str;
         }
@@ -102,7 +102,7 @@ public class Unit1Exercises {
      * middleThree("solving") -> "lvi"
      */
     public static String middleThree(String str) {
-        int strlength = str.length()/2;
+        int strlength = str.length() / 2;
         return str.substring(strlength - 1, strlength + 2);
     }
 
@@ -153,7 +153,7 @@ public class Unit1Exercises {
      * hasBad("xxbadxx") -> false
      */
     public static boolean hasBad(String str) {
-        if (str.indexOf("bad") > -1) {
+        if (str.indexOf("bad") <= 2) {
             return true;
         } else {
             return false;
@@ -182,7 +182,7 @@ public class Unit1Exercises {
                 count++;
             }
         }
-         return count;
+        return count;
     }
 
     // method: countCode
@@ -199,9 +199,9 @@ public class Unit1Exercises {
      */
     public static int countCode(String str) {
         int count = 0;
-        for (int i = 0; i < str.length(); i++) {
+        for (int i = 0; i < str.length() - 2; i++) {
             if (str.charAt(i) == 'c' && str.charAt(i + 1) == 'o' && str.charAt(i + 3) == 'e') {
-                    count++;
+                count++;
             }
         }
         return count;
