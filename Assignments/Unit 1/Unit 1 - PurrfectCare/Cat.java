@@ -12,6 +12,8 @@ public class Cat {
         this.ownerName = ownerName;
         this.moodLevel = moodLevel;
         this.catId = catId;
+        isHungry = true;
+        catChar = PurrfectUtils.generateCatChar(this.catId);
     }
 
 
@@ -75,12 +77,12 @@ public class Cat {
     }
 
 
-    public boolean getIsHungry() {
+    public boolean isHungry() {
         return isHungry;
     }
 
 
-    public void setIsHungry(boolean isHungry) {
+    public void setHungry(boolean isHungry) {
         this.isHungry = isHungry;
     }
 
@@ -96,34 +98,9 @@ public class Cat {
 
 
     public boolean equals(Cat other) {
-        if (this == other)
-            return true;
-        if (other == null)
-            return false;
-        if (getClass() != other.getClass())
-            return false;
-        if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        if (ownerName == null) {
-            if (other.ownerName != null)
-                return false;
-        } else if (!ownerName.equals(other.ownerName))
-            return false;
-        if (moodLevel != other.moodLevel)
-            return false;
-        if (catId == null) {
-            if (other.catId != null)
-                return false;
-        } else if (!catId.equals(other.catId))
-            return false;
-        if (catChar != other.catChar)
-            return false;
-        if (isHungry != other.isHungry)
-            return false;
-        return true;
+        return this.name.equals(other.name) && this.ownerName.equals(other.ownerName) 
+            && this.moodLevel == other.moodLevel && this.catId.equals(other.catId)
+                && this.catChar == other.catChar && this.isHungry == other.isHungry;
     }
 
     

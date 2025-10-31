@@ -1,23 +1,26 @@
 public class PurrfectUtils {
-    
+
     public static String determineCatMood(Cat cat) {
         if (cat.getMoodLevel() >= 7 && cat.getMoodLevel() <= 10) {
-           return "Currently, " + cat.getName() 
-                + " is in a great mood. \nPetting is appreciated."; 
+            return "Currently, " + cat.getName() + " is in a great mood. \nPetting is appreciated.";
         } else if (cat.getMoodLevel() >= 3 && cat.getMoodLevel() <= 7) {
-            return "Currently, " + cat.getName() 
-                + " is reminiscing of a past life. \nPetting is acceptable.";
+            return "Currently, " + cat.getName()
+                    + " is reminiscing of a past life. \nPetting is acceptable.";
         } else {
-            return "Currently, " + cat.getName() 
-                + " is plotting revengeance. \nPetting is extremely risky.";
+            return "Currently, " + cat.getName()
+                    + " is plotting revengeance. \nPetting is extremely risky.";
         }
     }
 
     public static char generateCatChar(String catId) {
-        return (char)(Integer.parseInt(catId) % 26 + 'A');
+        int returnNumber = 0;
+        for (int i = 0; i < catId.length(); i++) {
+            returnNumber += Integer.parseInt("" + catId.charAt(i));
+        }
+        return (char) (returnNumber % 26 + 'A');
     }
 
-    public static int generateRandomInt(int low, int high) {
+    public static int generateRandomNumber(int low, int high) {
         return (int) (Math.random() * (high - low) + low);
     }
 
@@ -25,7 +28,7 @@ public class PurrfectUtils {
         if (Integer.parseInt(catId) >= 1000 && Integer.parseInt(catId) <= 9999) {
             return catId;
         } else {
-            return "" + (generateRandomInt(1000, 9999));
+            return "" + (generateRandomNumber(1000, 9999));
         }
     }
 
@@ -37,7 +40,7 @@ public class PurrfectUtils {
         } else {
             return 0;
         }
-    }   
+    }
 
     public static void bootUp(Cat cat) {
         System.out.println(cat.toString());
@@ -48,7 +51,7 @@ public class PurrfectUtils {
         if (cat.getMoodLevel() >= 2) {
             cat.setMoodLevel(cat.getMoodLevel() + 1);
             System.out.println("Petting successful!");
-        } else if (cat.getMoodLevel() < 2 && cat.getIsHungry() == true) {
+        } else if (cat.getMoodLevel() < 2 && cat.isHungry() == true) {
             cat.setMoodLevel(cat.getMoodLevel() - 1);
             System.out.println("Petting failed...");
         } else {
@@ -59,7 +62,7 @@ public class PurrfectUtils {
 
     public static void trimClaws(Cat cat) {
         System.out.println("Attempting to trim claws...");
-        int oneOrTwo = PurrfectUtils.generateRandomInt(1, 2);
+        int oneOrTwo = PurrfectUtils.generateRandomNumber(1, 3);
         if (oneOrTwo == 1) {
             cat.setMoodLevel(cat.getMoodLevel() - 1);
             System.out.println(cat.getName() + " did not like that...");
@@ -80,6 +83,7 @@ public class PurrfectUtils {
         System.out.println(cat.getName() + " is eating...");
         System.out.println(cat.getName() + " is full!");
         cat.setMoodLevel(cat.getMoodLevel() + 2);
-        cat.setIsHungry(false);
+        cat.setHungry(false);
     }
+
 }
