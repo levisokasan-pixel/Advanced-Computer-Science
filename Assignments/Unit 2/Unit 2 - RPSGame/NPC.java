@@ -10,11 +10,15 @@ public class NPC {
     }
 
     public void setChoice(String choice) {
-        this.choice = choice;
+        if (RPSGame.validateChoice(choice)) {
+            this.choice = choice;
+        } else {
+            choice = RPSGame.generateRandomChoice();
+        }
     }
     
     public String toString() {
-        return "Opponent chose " + choice;
+        return "Opponent chose " + choice + ".";
     }
     
 }

@@ -15,11 +15,13 @@ public class Player {
         choice = choice.toLowerCase();
         if (RPSGame.validateChoice(choice)) {
             this.choice = choice;
+        } else {
+            this.choice = RPSGame.generateRandomChoice();
         }
     }
 
     public String toString() {
-        return name + " chose " + choice;
+        return name + " chose " + choice + ".";
     }
     
 }
